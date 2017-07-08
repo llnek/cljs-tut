@@ -1,9 +1,10 @@
-(ns cljstut.login)
+(ns cljstut.login
 
-(defn- getid "" [id]
-  (.getElementById js/document id))
+  (:require [domina :refer [by-id value] :as d]))
 
-(defn- getv "" [obj] (.-value obj))
+(defn- getid "" [id] (d/by-id id))
+
+(defn- getv "" [obj] (d/value obj))
 
 ;; define the function to be attached to form submission event
 (defn validateForm []

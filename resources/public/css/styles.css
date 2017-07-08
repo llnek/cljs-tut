@@ -1,4 +1,4 @@
-/* From: http://www.assemblesoft.com/examples/form/simpleform.html */
+// From: http://www.assemblesoft.com/examples/form/simpleform.html
 * {margin:0; padding:0;}
 
 html {
@@ -43,6 +43,8 @@ input {
 	border:1px solid #ddd;
 	background:#fafafa;
 	font:bold 1em arial, sans-serif;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
 	display:block;
 	float:left;
 }
@@ -119,14 +121,21 @@ input.default {
 	overflow:hidden;
 	border:0;
 	display:block;
-	cursor:pointer !important;
+	cursor:pointer !important; cursor:hand;
 }
 #submit:hover {
 	background-position:0 -26px;
 }
 
+textarea {
+	padding:0.15em;
+	width: 200px;
+	height: 50px;
+	display: block;
+}
+
 .error {
-	color: #FF1400;
+	color: ##FF1400;
 }
 /*
 :invalid {
