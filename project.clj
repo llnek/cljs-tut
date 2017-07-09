@@ -9,6 +9,7 @@
   :source-paths ["src/main/clojure" "src/main/cljsc" "src/main/brepl"]
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [domina "1.0.3"]
+                 [hiccups "0.3.0"]
                  [org.clojure/clojurescript "1.9.671"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project

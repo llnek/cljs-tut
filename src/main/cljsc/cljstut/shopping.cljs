@@ -1,6 +1,9 @@
 (ns cljstut.shopping
 
-  (:require [domina :refer [set-value! by-id value] :as d]))
+  (:require-macros [hiccups.core :as h])
+  (:require [domina :as d]
+            [hiccups.runtime]
+            [domina.events :as de]))
 
 (defn calculate []
   (let [quantity (d/value (d/by-id "quantity"))
@@ -13,11 +16,20 @@
                                     (.toFixed 2)))
     false))
 
+(defn add-help []
+  (d/append! (d/by-id "shoppingForm")
+             (h/html [:div.help "Click to calculate"])))
+
+(defn remove-help []
+  (d/destroy! (d/by-class "help")))
+
 (defn ^:export init []
-  (if (and js/document
-           (.-getElementById js/document))
-    (let [the-form (d/by-id "shoppingForm")]
-      (set! (.-onsubmit the-form) calculate))))
+  (when (and js/document
+             (aget js/document "getElementById"))
+    (doto (d/by-id "calc")
+      (de/listen! :click calculate)
+      (de/listen! :mouseout remove-help)
+      (de/listen! :mouseover add-help))))
 
 ;;(set! (.-onload js/window) init)
 
